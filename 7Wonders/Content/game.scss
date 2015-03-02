@@ -1,0 +1,260 @@
+﻿@mixin vertical-text-left($v, $h) {
+    @include rotate($v, $h, -90deg);
+}
+
+@mixin vertical-text-right($v, $h) {
+    @include rotate($v, $h, 90deg);
+}
+
+@mixin rotate($v, $h, $deg) {
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    transform: rotate($deg);
+    -moz-transform-origin: $v $h;
+    -ms-transform-origin: $v $h;
+    -o-transform-origin: $v $h;
+    -webkit-transform-origin: $v $h;
+    transform-origin: $v $h;
+}
+
+@mixin icon-size($size) {
+    width: $size;
+    height: $size;
+    font-size: 0.8*$size;
+    line-height: $size;
+}
+
+$basicSize: 20px;
+
+.game {
+    li {
+        list-style: none;
+    }
+}
+
+.card {
+    width: 8*$basicSize;
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    height: 16*$basicSize;
+    position: relative;
+    /*#region Icons*/
+    .icon {
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        font-weight: bold;
+        @include icon-size($basicSize);
+
+        .icon.money {
+            @include icon-size($basicSize/2);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .icon.victory {
+            @include icon-size($basicSize/2);
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .icon.large {
+        @include icon-size(2*$basicSize);
+
+        .icon {
+            @include icon-size($basicSize);
+        }
+    }
+
+    .icon.medium {
+        @include icon-size(1.5*$basicSize);
+
+        .icon {
+            @include icon-size(0.75*$basicSize);
+        }
+    }
+
+    .icon.wood {
+        background-image: url(/Content/Game/Icons/wood.png);
+    }
+
+    .icon.ore {
+        background-image: url(/Content/Game/Icons/ore.png);
+    }
+
+    .icon.stone {
+        background-image: url(/Content/Game/Icons/stone.png);
+    }
+
+    .icon.clay {
+        background-image: url(/Content/Game/Icons/clay.png);
+    }
+
+    .icon.glass {
+        background-image: url(/Content/Game/Icons/glass.png);
+    }
+
+    .icon.papyrus {
+        background-image: url(/Content/Game/Icons/papyrus.png);
+    }
+
+    .icon.textiles {
+        background-image: url(/Content/Game/Icons/textiles.png);
+    }
+
+    .icon.money {
+        background-image: url(/Content/Game/Icons/coin.png);
+        color: black;
+    }
+
+    .icon.victory {
+        background-image: url(/Content/Game/Icons/victory.png);
+    }
+
+    .icon.military {
+        background-image: url(/Content/Game/Icons/military.png);
+    }
+
+    .icon.tablet {
+        background-image: url(/Content/Game/Icons/tablet.png);
+    }
+
+    .icon.gear {
+        background-image: url(/Content/Game/Icons/gear.png);
+    }
+
+    .icon.compass {
+        background-image: url(/Content/Game/Icons/compass.png);
+    }
+
+    .icon.wonder {
+        background-image: url(/Content/Game/Icons/wonder.png);
+    }
+
+    .icon.militaryVictory {
+        background-image: url(/Content/Game/Icons/militaryVictory.png);
+    }
+    /*#endregion Icons*/
+    .name {
+        position: absolute;
+        bottom: 0;
+        width: 8*$basicSize;
+        left: $basicSize;
+        line-height: $basicSize;
+        font-size: $basicSize;
+        @include vertical-text-left(left, bottom);
+    }
+
+    .numberOfPlayers {
+        position: absolute;
+        bottom: 0;
+        font-size: $basicSize;
+        width: $basicSize;
+        line-height: $basicSize;
+        left: 50%;
+        margin-left: -0.5*$basicSize;
+    }
+
+    .costs {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .cost {
+            width: $basicSize;
+            float: left;
+        }
+
+        .cost.previousStructure {
+            .value {
+                display: block;
+                font-size: $basicSize;
+                line-height: $basicSize;
+                @include vertical-text-right(center, center);
+                white-space:nowrap;
+            }
+        }
+    }
+
+    .effects {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: $basicSize;
+        text-align: center;
+
+        .icon {
+            display: inline-block;
+        }
+
+        .separator {
+            display: inline-block;
+        }
+
+        .effects2 {
+            width: 2*$basicSize;
+        }
+        .effect.trade .money{
+            position: absolute;
+            left: 50%; 
+            margin-left: -0.75*$basicSize; 
+            @include icon-size(1.5*$basicSize);
+            top:-$basicSize;
+        }
+    }
+
+    .effects.offset1 {
+        left: $basicSize;
+    }
+
+    .effects.offset2 {
+        left: 2*$basicSize;
+    }
+
+    .bonus {
+        display: inline-block;
+    }
+}
+
+
+.rawMaterial {
+    background-color: saddlebrown;
+    color: white;
+}
+
+.manufacturedGood {
+    background-color: darkgray;
+    color: black;
+}
+
+.civilianStructure {
+    background-color: dodgerblue;
+    color: black;
+}
+
+.scientificStructure {
+    background-color: forestgreen;
+    color: white;
+}
+
+.commercialStructure {
+    background-color: gold;
+    color: black;
+}
+
+.militaryStructure {
+    background-color: red;
+    color: black;
+}
+
+.guild {
+    background-color: purple;
+    color: white;
+}

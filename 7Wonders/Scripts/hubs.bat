@@ -1,0 +1,1 @@
+wget http://7wonders.game/Signalr/Hubs -O Hubs.js

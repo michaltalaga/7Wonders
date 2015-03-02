@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Game";
+}
+@section scripts{
+    @Scripts.Render("~/bundles/signalr")
+    <script src="~/Scripts/Hubs.js"></script>
+    <script src="~/Scripts/game.js"></script>
+}
+<h2>Game</h2>
+<div>
+    <div ng-controller="LobbyController">
+        <input ng-model="gameName" />
+        <button ng-click="createGame()">Create Game</button>
+        <h1>Games</h1>
+        <ul>
+            <li ng-repeat="game in games" ng-click="selectGame(game)">{{game.name}}</li>
+        </ul>
+    </div>
+    <hr />
+    <div ng-controller="GameController" class="game">
+        {{game.name}}
+        <div ng-show="game">
+
+            <button ng-click="join()">join</button>
+            <div ng-show="turn">turn: {{turn.turnNumber}}</div>
+            
+            <hand cards="turn.cards"></hand>
+
+        </div>
+
+    </div>
+</div>
+

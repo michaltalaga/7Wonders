@@ -1,0 +1,193 @@
+﻿.game li {
+  list-style: none; }
+
+.card {
+  width: 160px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: top;
+  height: 320px;
+  position: relative;
+  /*#region Icons*/
+  /*#endregion Icons*/ }
+  .card .icon {
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px; }
+    .card .icon .icon.money {
+      width: 10px;
+      height: 10px;
+      font-size: 8px;
+      line-height: 10px;
+      position: absolute;
+      left: 0;
+      bottom: 0; }
+    .card .icon .icon.victory {
+      width: 10px;
+      height: 10px;
+      font-size: 8px;
+      line-height: 10px;
+      position: absolute;
+      right: 0;
+      bottom: 0; }
+  .card .icon.large {
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    line-height: 40px; }
+    .card .icon.large .icon {
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
+      line-height: 20px; }
+  .card .icon.medium {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    line-height: 30px; }
+    .card .icon.medium .icon {
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+      line-height: 15px; }
+  .card .icon.wood {
+    background-image: url(/Content/Game/Icons/wood.png); }
+  .card .icon.ore {
+    background-image: url(/Content/Game/Icons/ore.png); }
+  .card .icon.stone {
+    background-image: url(/Content/Game/Icons/stone.png); }
+  .card .icon.clay {
+    background-image: url(/Content/Game/Icons/clay.png); }
+  .card .icon.glass {
+    background-image: url(/Content/Game/Icons/glass.png); }
+  .card .icon.papyrus {
+    background-image: url(/Content/Game/Icons/papyrus.png); }
+  .card .icon.textiles {
+    background-image: url(/Content/Game/Icons/textiles.png); }
+  .card .icon.money {
+    background-image: url(/Content/Game/Icons/coin.png);
+    color: black; }
+  .card .icon.victory {
+    background-image: url(/Content/Game/Icons/victory.png); }
+  .card .icon.military {
+    background-image: url(/Content/Game/Icons/military.png); }
+  .card .icon.tablet {
+    background-image: url(/Content/Game/Icons/tablet.png); }
+  .card .icon.gear {
+    background-image: url(/Content/Game/Icons/gear.png); }
+  .card .icon.compass {
+    background-image: url(/Content/Game/Icons/compass.png); }
+  .card .icon.wonder {
+    background-image: url(/Content/Game/Icons/wonder.png); }
+  .card .icon.militaryVictory {
+    background-image: url(/Content/Game/Icons/militaryVictory.png); }
+  .card .name {
+    position: absolute;
+    bottom: 0;
+    width: 160px;
+    left: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom; }
+  .card .numberOfPlayers {
+    position: absolute;
+    bottom: 0;
+    font-size: 20px;
+    width: 20px;
+    line-height: 20px;
+    left: 50%;
+    margin-left: -10px; }
+  .card .costs {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .card .costs .cost {
+      width: 20px;
+      float: left; }
+    .card .costs .cost.previousStructure .value {
+      display: block;
+      font-size: 20px;
+      line-height: 20px;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+      -moz-transform-origin: center center;
+      -ms-transform-origin: center center;
+      -o-transform-origin: center center;
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+      white-space: nowrap; }
+  .card .effects {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    text-align: center; }
+    .card .effects .icon {
+      display: inline-block; }
+    .card .effects .separator {
+      display: inline-block; }
+    .card .effects .effects2 {
+      width: 40px; }
+    .card .effects .effect.trade .money {
+      position: absolute;
+      left: 50%;
+      margin-left: -15px;
+      width: 30px;
+      height: 30px;
+      font-size: 24px;
+      line-height: 30px;
+      top: -20px; }
+  .card .effects.offset1 {
+    left: 20px; }
+  .card .effects.offset2 {
+    left: 40px; }
+  .card .bonus {
+    display: inline-block; }
+
+.rawMaterial {
+  background-color: saddlebrown;
+  color: white; }
+
+.manufacturedGood {
+  background-color: darkgray;
+  color: black; }
+
+.civilianStructure {
+  background-color: dodgerblue;
+  color: black; }
+
+.scientificStructure {
+  background-color: forestgreen;
+  color: white; }
+
+.commercialStructure {
+  background-color: gold;
+  color: black; }
+
+.militaryStructure {
+  background-color: red;
+  color: black; }
+
+.guild {
+  background-color: purple;
+  color: white; }
+
+/*# sourceMappingURL=game.css.map */

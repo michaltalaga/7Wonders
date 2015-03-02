@@ -1,0 +1,860 @@
+[
+    //#region raw materials
+    {
+        "name": "lumber yard",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "wood"
+        ]
+    },
+    {
+        "name": "lumber yard",
+        "numberOfPlayers": 4,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "wood"
+        ]
+    },
+    {
+        "name": "stone pit",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "stone"
+        ]
+    },
+    {
+        "name": "stone pit",
+        "numberOfPlayers": 5,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "stone"
+        ]
+    },
+    {
+        "name": "clay pool",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "clay"
+        ]
+    },
+    {
+        "name": "clay pool",
+        "numberOfPlayers": 5,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "clay"
+        ]
+    },
+    {
+        "name": "ore vein",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "ore"
+        ]
+    },
+    {
+        "name": "ore vein",
+        "numberOfPlayers": 4,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "allResourcesProduced": [
+            "ore"
+        ]
+    },
+    {
+        "name": "tree farm",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "wood",
+            "clay"
+        ]
+    },
+    {
+        "name": "excavation",
+        "numberOfPlayers": 4,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "stone",
+            "clay"
+        ]
+    },
+    {
+        "name": "clay pit",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "clay",
+            "ore"
+        ]
+    },
+    {
+        "name": "timber yard",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "stone",
+            "wood"
+        ]
+    },
+    {
+        "name": "forest cave",
+        "numberOfPlayers": 5,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "wood",
+            "ore"
+        ]
+    },
+    {
+        "name": "mine",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "eitherOrResourcesProduced": [
+            "ore",
+            "stone"
+        ]
+    },
+    {
+        "name": "sawmill",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "wood",
+            "wood"
+        ]
+    },
+    {
+        "name": "sawmill",
+        "numberOfPlayers": 4,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "wood",
+            "wood"
+        ]
+    },
+    {
+        "name": "quarry",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "stone",
+            "stone"
+        ]
+    },
+    {
+        "name": "quarry",
+        "numberOfPlayers": 4,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "stone",
+            "stone"
+        ]
+    },
+    {
+        "name": "brickyard",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "clay",
+            "clay"
+        ]
+    },
+    {
+        "name": "brickyard",
+        "numberOfPlayers": 4,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "clay",
+            "clay"
+        ]
+    },
+    {
+        "name": "foundry",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "ore",
+            "ore"
+        ]
+    },
+    {
+        "name": "foundry",
+        "numberOfPlayers": 4,
+        "age": 2,
+        "cardType": "rawMaterial",
+        "price": 1,
+        "allResourcesProduced": [
+            "ore",
+            "ore"
+        ]
+    },
+    //#endregion
+    //#region manufactured goods
+    {
+        "name": "loom",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "textiles"
+        ]
+    },
+    {
+        "name": "loom",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "textiles"
+        ]
+    },
+    {
+        "name": "glassworks",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "glass"
+        ]
+    },
+    {
+        "name": "glassworks",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "glass"
+        ]
+    },
+    {
+        "name": "press",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "papyrus"
+        ]
+    },
+    {
+        "name": "press",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "papyrus"
+        ]
+    },
+    {
+        "name": "loom",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "textiles"
+        ]
+    },
+    {
+        "name": "loom",
+        "numberOfPlayers": 5,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "textiles"
+        ]
+    },
+    {
+        "name": "glassworks",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "glass"
+        ]
+    },
+    {
+        "name": "glassworks",
+        "numberOfPlayers": 5,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "glass"
+        ]
+    },
+    {
+        "name": "press",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "papyrus"
+        ]
+    },
+    {
+        "name": "press",
+        "numberOfPlayers": 5,
+        "age": 2,
+        "cardType": "manufacturedGood",
+        "allResourcesProduced": [
+            "papyrus"
+        ]
+    },
+    //#endregion
+    //#region commercial structures
+    {
+        "name": "tavern",
+        "numberOfPlayers": 4,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "moneyWorth": 5
+    },
+    {
+        "name": "tavern",
+        "numberOfPlayers": 5,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "moneyWorth": 5
+    },
+    {
+        "name": "tavern",
+        "numberOfPlayers": 7,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "moneyWorth": 5
+    },
+    {
+        "name": "east trading post",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "clay",
+                "stone",
+                "wood",
+                "ore"
+            ],
+            "left": false,
+            "right": true
+        }
+    },
+    {
+        "name": "east trading post",
+        "numberOfPlayers": 7,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "clay",
+                "stone",
+                "wood",
+                "ore"
+            ],
+            "left": false,
+            "right": true
+        }
+    },
+    {
+        "name": "west trading post",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "clay",
+                "stone",
+                "wood",
+                "ore"
+            ],
+            "left": true,
+            "right": false
+        }
+    },
+    {
+        "name": "west trading post",
+        "numberOfPlayers": 7,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "clay",
+                "stone",
+                "wood",
+                "ore"
+            ],
+            "left": true,
+            "right": false
+        }
+    },
+    {
+        "name": "marketplace",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "glass",
+                "textiles",
+                "papyrus"
+            ],
+            "left": true,
+            "right": true
+        }
+    },
+    {
+        "name": "marketplace",
+        "numberOfPlayers": 6,
+        "age": 1,
+        "cardType": "commercialStructure",
+        "allowTrade": {
+            "resources": [
+                "glass",
+                "textiles",
+                "papyrus"
+            ],
+            "left": true,
+            "right": true
+        }
+    },
+    {
+        "name": "forum",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "clay",
+            "clay"
+        ],
+        "previousStructure": "trading post",
+        "eitherOrResourcesProduced": [
+            "textiles",
+            "glass",
+            "papyrus"
+        ]
+    },
+    {
+        "name": "forum",
+        "numberOfPlayers": 6,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "clay",
+            "clay"
+        ],
+        "previousStructure": "trading post",
+        "eitherOrResourcesProduced": [
+            "textiles",
+            "glass",
+            "papyrus"
+        ]
+    },
+    {
+        "name": "forum",
+        "numberOfPlayers": 7,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "clay",
+            "clay"
+        ],
+        "previousStructure": "trading post",
+        "eitherOrResourcesProduced": [
+            "textiles",
+            "glass",
+            "papyrus"
+        ]
+    },
+    {
+        "name": "caravansery",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "wood",
+            "wood"
+        ],
+        "previousStructure": "marketplace",
+        "eitherOrResourcesProduced": [
+            "clay",
+            "stone",
+            "ore",
+            "wood"
+        ]
+    },
+    {
+        "name": "caravansery",
+        "numberOfPlayers": 5,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "wood",
+            "wood"
+        ],
+        "previousStructure": "marketplace",
+        "eitherOrResourcesProduced": [
+            "clay",
+            "stone",
+            "ore",
+            "wood"
+        ]
+    },
+    {
+        "name": "caravansery",
+        "numberOfPlayers": 6,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "wood",
+            "wood"
+        ],
+        "previousStructure": "marketplace",
+        "eitherOrResourcesProduced": [
+            "clay",
+            "stone",
+            "ore",
+            "wood"
+        ]
+    },
+    {
+        "name": "vineyard",
+        "numberOfPlayers": 3,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "bonuses": [
+            {
+                "left": true,
+                "self": true,
+                "right": true,
+                "rewardForCardType": "rawMaterial",
+                "money": 1
+            }
+        ]
+    },
+    {
+        "name": "vineyard",
+        "numberOfPlayers": 6,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "bonuses": [
+            {
+                "left": true,
+                "self": true,
+                "right": true,
+                "rewardForCardType": "rawMaterial",
+                "money": 1
+            }
+        ]
+    },
+    {
+        "name": "bazar",
+        "numberOfPlayers": 4,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "bonuses": [
+            {
+                "left": true,
+                "self": true,
+                "right": true,
+                "rewardForCardType": "manufacturedGood",
+                "money": 2
+            }
+        ]
+    },
+    {
+        "name": "bazar",
+        "numberOfPlayers": 7,
+        "age": 2,
+        "cardType": "commercialStructure",
+        "bonuses": [
+            {
+                "left": true,
+                "self": true,
+                "right": true,
+                "rewardForCardType": "manufacturedGood",
+                "money": 2
+            }
+        ]
+    },
+    {
+        "name": "haven",
+        "numberOfPlayers": 3,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "textiles",
+            "ore",
+            "wood"
+        ],
+        "previousStructure": "forum",
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "rawMaterial",
+                "money": 1,
+                "victoryPoints": 1
+            }
+        ]
+    },
+    {
+        "name": "haven",
+        "numberOfPlayers": 4,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "textiles",
+            "ore",
+            "wood"
+        ],
+        "previousStructure": "forum",
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "rawMaterial",
+                "money": 1,
+                "victoryPoints": 1
+            }
+        ]
+    },
+    {
+        "name": "lighthouse",
+        "numberOfPlayers": 3,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "glass",
+            "stone"
+        ],
+        "previousStructure": "caravansery",
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "commercialStructure",
+                "money": 1,
+                "victoryPoints": 1
+            }
+        ]
+    },
+    {
+        "name": "lighthouse",
+        "numberOfPlayers": 6,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "glass",
+            "stone"
+        ],
+        "previousStructure": "caravansery",
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "commercialStructure",
+                "money": 1,
+                "victoryPoints": 1
+            }
+        ]
+    },
+    {
+        "name": "chamber of commerce",
+        "numberOfPlayers": 4,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "clay",
+            "clay",
+            "textiles"
+        ],
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "manufacturedGood",
+                "money": 2,
+                "victoryPoints": 2
+            }
+        ]
+    },
+    {
+        "name": "chamber of commerce",
+        "numberOfPlayers": 6,
+        "age": 3,
+        "cardType": "commercialStructure",
+        "requiredResources": [
+            "clay",
+            "clay",
+            "textiles"
+        ],
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "rewardForCardType": "manufacturedGood",
+                "money": 2,
+                "victoryPoints": 2
+            }
+        ]
+    },
+    //#endregion
+    {
+        "name": "pawnshop",
+        "numberOfPlayers": 4,
+        "age": 1,
+        "cardType": "civilianStructure",
+        "victoryPoints": 3
+    },
+    {
+        "name": "pawnshop",
+        "numberOfPlayers": 7,
+        "age": 1,
+        "cardType": "civilianStructure",
+        "victoryPoints": 3
+    },
+    {
+        "name": "stockade",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "militaryStructure",
+        "requiredResources": [
+            "wood"
+        ],
+        "militaryPoints": 1
+    },
+    {
+        "name": "stockade",
+        "numberOfPlayers": 7,
+        "age": 1,
+        "cardType": "militaryStructure",
+        "requiredResources": [
+            "wood"
+        ],
+        "militaryPoints": 1
+    },
+    {
+        "name": "apothecary",
+        "numberOfPlayers": 3,
+        "age": 1,
+        "cardType": "scientificStructure",
+        "requiredResources": [
+            "textiles"
+        ],
+        "eitherOrScienceSymbolsProduced": [
+            "compass"
+        ]
+    },
+    {
+        "name": "apothecary",
+        "numberOfPlayers": 5,
+        "age": 1,
+        "cardType": "scientificStructure",
+        "requiredResources": [
+            "textiles"
+        ],
+        "eitherOrScienceSymbolsProduced": [
+            "compass"
+        ]
+    },
+    {
+        "name": "workers guild",
+        "numberOfPlayers": 3,
+        "age": 3,
+        "cardType": "guild",
+        "requiredResources": [
+            "ore",
+            "ore",
+            "clay",
+            "stone",
+            "wood"
+        ],
+        "bonuses": [
+            {
+                "left": true,
+                "self": false,
+                "right": true,
+                "victoryPoints": 1,
+                "rewardForCardType": "rawMaterial"
+            }
+        ]
+    },
+    {
+        "name": "shipowners guild",
+        "numberOfPlayers": 3,
+        "age": 3,
+        "cardType": "guild",
+        "requiredResources": [
+            "wood",
+            "wood",
+            "wood",
+            "papyrus",
+            "glass"
+        ],
+        "bonuses": [
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "victoryPoints": 1,
+                "rewardForCardType": "rawMaterial"
+            },
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "victoryPoints": 1,
+                "rewardForCardType": "manufacturedGood"
+            },
+            {
+                "left": false,
+                "self": true,
+                "right": false,
+                "victoryPoints": 1,
+                "rewardForCardType": "guild"
+            }
+        ]
+    }
+]
