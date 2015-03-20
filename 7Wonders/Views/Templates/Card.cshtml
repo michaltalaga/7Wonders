@@ -1,42 +1,39 @@
-﻿<div class="card" ng-class="card.cardType">
-    <div class="name">{{card.name}}</div>
-    <div class="numberOfPlayers">{{card.numberOfPlayers}}</div>
-    <div class="costs">
-        <div class="cost resources" ng-show="card.requiredResources">
-            <icon ng-repeat="resource in card.requiredResources track by $index" kind="resource" value="resource"></icon>
-        </div>
-        <div class="cost previousStructure" ng-show="card.previousStructure"><span class="value">{{card.previousStructure}}</span></div>
-        <div class="cost money" ng-show="card.price">
-            <icon kind="money" text="card.price"></icon>
-        </div>
-    </div>
-    <div class="effects" ng-show="card.hasEffect" ng-class="'offset'+{{numberOfCosts}}">
-        <icon ng-repeat-start="resource in card.eitherOrResourcesProduced" kind="resource" value="resource" size="card.eitherOrResourcesProduced.length + numberOfCosts" /><div class="separator" ng-repeat-end="" ng-hide="$last">/</div>
+﻿<div class="card" ng-class="card.cardType" ng-dblclick="play(card)">
+	<div class="name">{{card.name}}</div>
+	<div class="numberOfPlayers">{{card.numberOfPlayers}}</div>
+	<div class="costs">
+		<div class="cost resources" ng-show="card.requiredResources">
+			<icon ng-repeat="resource in card.requiredResources track by $index" kind="resource" value="resource"></icon>
+		</div>
+		<div class="cost previousStructure" ng-show="card.previousStructure"><span class="value">{{card.previousStructure}}</span></div>
+		<div class="cost money" ng-show="card.price">
+			<icon kind="money" text="card.price"></icon>
+		</div>
+	</div>
+	<div class="effects" ng-show="card.effects" ng-class="'offset'+{{numberOfCosts}}">
+		<div ng-repeat="effect in card.effects" class="bonus">
+			<i ng-show="effect.left" class="fa fa-arrow-left"></i>
+			<icon ng-repeat-start="resource in effect.eitherOrResourcesProduced" kind="resource" value="resource" size="effectsSize(effect) + numberOfCosts" /><div class="separator" ng-repeat-end="" ng-hide="$last">/</div>
 
-        <icon ng-repeat="resource in card.allResourcesProduced track by $index" kind="resource" value="resource" size="card.allResourcesProduced.length + numberOfCosts" />
+			<icon ng-repeat="resource in effect.allResourcesProduced track by $index" kind="resource" value="resource" size="effectsSize(effect) + numberOfCosts" />
 
-        <div class="effect trade" ng-show="card.allowTrade">
-            <icon kind="money" text="1"></icon>
-            <i ng-show="card.allowTrade.left" class="fa fa-arrow-left"></i><icon ng-repeat="resource in card.allowTrade.resources" kind="resource" value="resource" size="card.allowTrade.resources.length + numberOfCosts" /><i ng-show="card.allowTrade.right" class="fa fa-arrow-right"></i>
-        </div>
-        
-        <icon ng-show="card.moneyWorth" kind="money" text="card.moneyWorth" size="1" />
-        <icon ng-show="card.victoryPoints" kind="victory" text="card.victoryPoints" size="1"></icon>
-        <icon ng-show="card.militaryPoints" ng-repeat="number in toArrayWithLength(card.militaryPoints) track by $index" kind="military" size="card.militaryPoints" />
-        <icon ng-repeat-start="symbol in card.eitherOrScienceSymbolsProduced" kind="science" value="symbol" size="card.eitherOrScienceSymbolsProduced.length" /><span ng-repeat-end="" ng-hide="$last">/</span>
-        <div ng-repeat="bonus in card.bonuses" class="bonus">
-            <i ng-show="bonus.left" class="fa fa-arrow-left"></i>
-            <icon ng-if="bonus.rewardForCardType" kind="card" value="bonus.rewardForCardType" money="bonus.money" victory="bonus.victoryPoints" size="card.bonuses.length + numberOfCosts" />
-            <icon ng-if="bonus.rewardForWonderStages" kind="wonder" money="bonus.money" victory="bonus.victoryPoints" size="card.bonuses.length + numberOfCosts" />
-            <icon ng-if="bonus.rewardForMilitaryVictories" kind="militaryVictory" money="bonus.money" victory="bonus.victoryPoints" size="card.bonuses.length + numberOfCosts" />
-            <i ng-show="bonus.self" class="fa fa-arrow-down"></i>
-            <i ng-show="bonus.right" class="fa fa-arrow-right"></i>
-        </div>
-        @*<div class="effect bonus" ng-repeat="bonus in card.bonuses" ng-show="card.bonuses" ng-class="{'multipleBonus': card.bonuses.length > 1}">
-            <span ng-show="bonus.left">&lt;</span><span class="price" ng-class="getBonusTypeName(bonus)">
-                <span class="money" ng-show="bonus.money"><img ng-src="/Content/Game/Icons/coin.png" /><span class="value">{{bonus.money}}</span></span><span class="victory" ng-show="bonus.victoryPoints"><img ng-src="/Content/Game/Icons/victory.png" /><span class="value">{{bonus.victoryPoints}}</span></span>
-            </span><span ng-show="bonus.right">&gt;</span>
-            <div ng-show="bonus.self">V</div>
-        </div>*@
-    </div>
+			<div class="trade" ng-show="effect.allowTradeResources">
+				<icon kind="money" text="1"></icon>
+				<icon ng-repeat="resource in effect.allowTradeResources" kind="resource" value="resource" size="effectsSize(effect) + numberOfCosts" />
+			</div>
+
+			<icon ng-show="!effect.rewardForSomething && effect.money" kind="money" text="effect.money" size="1" />
+			<icon ng-show="!effect.rewardForSomething && effect.victoryPoints" kind="victory" text="effect.victoryPoints" size="1"></icon>
+
+			<icon ng-show="effect.militaryPoints" ng-repeat="number in toArrayWithLength(effect.militaryPoints) track by $index" kind="military" size="effectsSize(effect) + numberOfCosts" />
+			<icon ng-repeat-start="symbol in effect.eitherOrScienceSymbolsProduced" kind="science" value="symbol" size="effectsSize(effect) + numberOfCosts" /><span ng-repeat-end="" ng-hide="$last">/</span>
+
+
+			<icon ng-if="effect.rewardForCardType" kind="card" value="effect.rewardForCardType" money="effect.money" victory="effect.victoryPoints" size="effectsSize(effect) + numberOfCosts" />
+			<icon ng-if="effect.rewardForWonderStages" kind="wonder" money="effect.money" victory="effect.victoryPoints" size="effectsSize(effect) + numberOfCosts" />
+			<icon ng-if="effect.rewardForMilitaryVictories" kind="militaryVictory" money="effect.money" victory="effect.victoryPoints" size="effectsSize(effect) + numberOfCosts" />
+			<i ng-show="effect.self" class="fa fa-arrow-down"></i>
+			<i ng-show="effect.right" class="fa fa-arrow-right"></i>
+		</div>
+	</div>
 </div>

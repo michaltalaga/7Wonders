@@ -1,192 +1,143 @@
 {
-    "title": "Card[]",
-    "type": "array",
-    "items": {
-        "type": [
-            "object",
-            "null"
-        ],
-        "properties": {
-            "name": {
-                "required": true,
-                "type": [
-                    "string",
-                    "null"
-                ]
-            },
-            "numberOfPlayers": {
-                "required": true,
-                "type": "integer"
-            },
-            "age": {
-                "required": true,
-                "type": "integer"
-            },
-            "cardType": {
-                "required": true,
-                "type": "any"
-            },
-            "requiredResources": {
-                "required": false,
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": "any"
-                }
-            },
-            "price": {
-                "required": false,
-                "type": [
-                    "integer",
-                    "null"
-                ]
-            },
-            "previousStructure": {
-                "required": false,
-                "type": [
-                    "string",
-                    "null"
-                ]
-            },
-            "eitherOrResourcesProduced": {
-                "required": false,
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": "any"
-                }
-            },
-            "allResourcesProduced": {
-                "required": false,
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": "any"
-                }
-            },
-            "allowTrade": {
-                "required": false,
-                "type": [
-                    "object",
-                    "null"
-                ],
-                "properties": {
-                    "resources": {
-                        "required": false,
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "items": {
-                            "type": "any"
-                        }
-                    },
-                    "left": {
-                        "required": true,
-                        "type": "boolean"
-                    },
-                    "right": {
-                        "required": true,
-                        "type": "boolean"
-                    }
-                }
-            },
-            "moneyWorth": {
-                "required": false,
-                "type": [
-                    "integer",
-                    "null"
-                ]
-            },
-            "victoryPoints": {
-                "required": false,
-                "type": [
-                    "integer",
-                    "null"
-                ]
-            },
-            "militaryPoints": {
-                "required": false,
-                "type": [
-                    "integer",
-                    "null"
-                ]
-            },
-            "eitherOrScienceSymbolsProduced": {
-                "required": false,
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": "any"
-                }
-            },
-            "bonuses": {
-                "required": false,
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "properties": {
-                        "left": {
-                            "required": true,
-                            "type": "boolean"
-                        },
-                        "self": {
-                            "required": true,
-                            "type": "boolean"
-                        },
-                        "right": {
-                            "required": true,
-                            "type": "boolean"
-                        },
-                        "money": {
-                            "required": false,
-                            "type": [
-                                "integer",
-                                "null"
-                            ]
-                        },
-                        "victoryPoints": {
-                            "required": false,
-                            "type": [
-                                "integer",
-                                "null"
-                            ]
-                        },
-                        "rewardForCardType": {
-                            "required": false,
-                            "type": "any"
-                        },
-                        "rewardForWonderStages": {
-                            "required": false,
-                            "type": [
-                                "boolean",
-                                "null"
-                            ]
-                        },
-                        "rewardForMilitaryVictories": {
-                            "required": false,
-                            "type": [
-                                "boolean",
-                                "null"
-                            ]
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"title": "Card[]",
+	"type": "array",
+	"items": {
+		"type": [
+			"object",
+			"null"
+		],
+		"properties": {
+			"name": {
+				"required": true,
+				"type": [
+					"string",
+					"null"
+				]
+			},
+			"code": {
+				"required": false,
+				"type": "string"
+			},
+			"numberOfPlayers": {
+				"required": true,
+				"type": "integer"
+			},
+			"age": {
+				"required": true,
+				"type": "integer"
+			},
+			"cardType": { "enum": [ "rawMaterial", "manufacturedGood", "commercialStructure", "civilianStructure", "militaryStructure", "scientificStructure", "guild" ] },
+			"requiredResources": {
+				"required": false,
+				"type": [
+					"array",
+					"null"
+				],
+				"items": { "enum": [ "wood", "ore", "stone", "clay", "glass", "papyrus", "textiles" ] }
+			},
+			"price": {
+				"required": false,
+				"type": [
+					"integer",
+					"null"
+				]
+			},
+			"previousStructure": {
+				"required": false,
+				"type": [
+					"string",
+					"null"
+				]
+			},
+			"effects": {
+				"required": false,
+				"type": [
+					"array",
+					"null"
+				],
+				"items": {
+					"type": [
+						"object",
+						"null"
+					],
+					"properties": {
+						"left": {
+							"required": true,
+							"type": "boolean"
+						},
+						"self": {
+							"required": true,
+							"type": "boolean"
+						},
+						"right": {
+							"required": true,
+							"type": "boolean"
+						},
+						"money": {
+							"required": false,
+							"type": [
+								"integer",
+								"null"
+							]
+						},
+						"victoryPoints": {
+							"required": false,
+							"type": [
+								"integer",
+								"null"
+							]
+						},
+						"militaryPoints": {
+							"required": false,
+							"type": [
+								"integer",
+								"null"
+							]
+						},
+						"rewardForCardType": { "enum": [ "rawMaterial", "manufacturedGood", "commercialStructure", "civilianStructure", "militaryStructure", "scientificStructure", "guild" ] },
+						"rewardForWonderStages": {
+							"required": false,
+							"type": [
+								"boolean",
+								"null"
+							]
+						},
+						"rewardForMilitaryVictories": {
+							"required": false,
+							"type": [
+								"boolean",
+								"null"
+							]
+						},
+						"eitherOrResourcesProduced": {
+							"required": false,
+							"type": [
+								"array",
+								"null"
+							],
+							"items": { "enum": [ "wood", "ore", "stone", "clay", "glass", "papyrus", "textiles" ] }
+						},
+						"allResourcesProduced": {
+							"required": false,
+							"type": "array",
+							"items": { "enum": [ "wood", "ore", "stone", "clay", "glass", "papyrus", "textiles" ] }
+						},
+						"eitherOrScienceSymbolsProduced": {
+							"required": false,
+							"type": [
+								"array",
+								"null"
+							],
+							"items": { "enum": [ "compass", "tablet", "gear" ] }
+						},
+						"allowTradeResources": {
+							"required": false,
+							"type": "array",
+							"items": { "enum": [ "wood", "ore", "stone", "clay", "glass", "papyrus", "textiles" ] }
+						}
+					}
+				}
+			}
+		}
+	}
 }

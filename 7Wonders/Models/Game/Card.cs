@@ -11,8 +11,10 @@ namespace _7Wonders.Models.Game
     [TsClass]
     public class Card
     {
-        public string Name { get; set; }
-        public int NumberOfPlayers { get; set; }
+		public Guid Id { get; set; }
+		public string Name { get; set; }
+		public string Code { get; set; }
+		public int NumberOfPlayers { get; set; }
         public int Age { get; set; }
         public CardType CardType { get; set; }
 
@@ -23,47 +25,29 @@ namespace _7Wonders.Models.Game
         [TsProperty(IsOptional = true)]
         public string PreviousStructure { get; set; }
 
-        [TsProperty(IsOptional = true)]
-        public IEnumerable<ResourceType> EitherOrResourcesProduced { get; set; }
-        [TsProperty(IsOptional = true)]
-        public IEnumerable<ResourceType> AllResourcesProduced { get; set; }
-
-        [TsProperty(IsOptional = true)]
-        public AllowTrade AllowTrade { get; set; }
-        [TsProperty(IsOptional = true)]
-        public int? MoneyWorth { get; set; }
-        [TsProperty(IsOptional = true)]
-        public int? VictoryPoints { get; set; }
-        [TsProperty(IsOptional = true)]
-        public int? MilitaryPoints { get; set; }
-        [TsProperty(IsOptional = true)]
-        public IEnumerable<ScienceSymbol> EitherOrScienceSymbolsProduced { get; set; }
-        [TsProperty(IsOptional = true)]
-        public IEnumerable<Bonus> Bonuses { get; set; }
+		[TsProperty(IsOptional = true)]
+		public IEnumerable<Effect> Effects { get; set; }
 
      
 
-        public bool HasEffect
-        {
-            get
-            {
-                return EitherOrResourcesProduced != null 
-                    || AllResourcesProduced != null 
-                    || AllowTrade != null 
-                    || MoneyWorth != null
-                    || VictoryPoints != null
-                    || MilitaryPoints != null
-                    || EitherOrScienceSymbolsProduced != null
-                    || Bonuses != null
-                    ;
-            }
-        }
-        // victory/guilds <[{2}]>, <[{1}]>, < ({1}|-1|) >, [1][1][1], < V >
-        // yellow bonus     [(1)]      [ ]
-        //                < V >       (1){1}
+   
+		public static readonly IEqualityComparer<Card> NameEqualityComparer = new CardNameEqualityComparerImpl();
 
-    }
-    public class Bonus
+		private class CardNameEqualityComparerImpl : IEqualityComparer<Card>
+		{
+			public bool Equals(Card x, Card y)
+			{
+				return x.Name == y.Name;
+			}
+
+			public int GetHashCode(Card obj)
+			{
+				return obj.GetHashCode();
+			}
+		}
+		
+	}
+    public class Effect
     {
         public bool Left { get; set; }
         public bool Self { get; set; }
@@ -72,19 +56,35 @@ namespace _7Wonders.Models.Game
         public int? Money { get; set; }
         [TsProperty(IsOptional = true)]
         public int? VictoryPoints { get; set; }
-        [TsProperty(IsOptional = true)]
+		[TsProperty(IsOptional = true)]
+		public int? MilitaryPoints { get; set; }
+		[TsProperty(IsOptional = true)]
         public CardType? RewardForCardType { get; set; }
         [TsProperty(IsOptional = true)]
         public bool? RewardForWonderStages { get; set; }
         [TsProperty(IsOptional = true)]
         public bool? RewardForMilitaryVictories { get; set; }
-    }
-    public class AllowTrade
-    {
-        public IEnumerable<ResourceType> Resources { get; set; }
-        public bool Left { get; set; }
-        public bool Right { get; set; }
-    }
+
+
+		[TsProperty(IsOptional = true)]
+		public IEnumerable<ResourceType> EitherOrResourcesProduced { get; set; }
+		[TsProperty(IsOptional = true)]
+		public IEnumerable<ResourceType> AllResourcesProduced { get; set; }
+		[TsProperty(IsOptional = true)]
+		public IEnumerable<ScienceSymbol> EitherOrScienceSymbolsProduced { get; set; }
+		[TsProperty(IsOptional = true)]
+		public IEnumerable<ResourceType> AllowTradeResources { get; set; }
+
+
+		public bool RewardForSomething
+		{
+			get
+			{
+				return RewardForCardType != null || RewardForWonderStages != null || RewardForMilitaryVictories != null;
+			}
+		}
+	}
+   
     [JsonConverter(typeof(StringEnumConverterCamelCased))]
     public enum ScienceSymbol
     {

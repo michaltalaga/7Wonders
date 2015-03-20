@@ -7,20 +7,29 @@ interface SignalR {
 interface GameHub {
     client: {
         newTurn(turn: _7Wonders.Models.Game.GameTurn);
+		gameDetailsChanged(game: _7Wonders.Hubs.GameDetails);
+		gameOptionsChanged(gameOptions: _7Wonders.Hubs.GameOptions);
     };
     server: {
 
-        getGameDetails(id): JQueryPromise<void>;
+        watchGame(id): JQueryPromise<void>;
+		stopWatchingGame(): JQueryPromise<void>;
         joinGame(id): JQueryPromise<void>;
+		leaveGame(): JQueryPromise<void>;
+		startGame(): JQueryPromise<void>;
+		playCard(id): JQueryPromise<void>;
+		rejoin(): JQueryPromise<void>;
     };
 }
 interface LobbyHub {
     client: {
-        gameListChanged(games);
+        gameListChanged(games: _7Wonders.Hubs.GameListItem[]);
+        playerListChanged(players: _7Wonders.Hubs.PlayerListItem[]);
+		error(message: string);
     };
     server: {
         createGame(name: string): JQueryPromise<void>;
-        start(): JQueryPromise<void>;
+        initialize(): JQueryPromise<void>;
     };
 }
 

@@ -22,6 +22,7 @@ namespace _7Wonders
             GlobalHost.DependencyResolver.Register(typeof(JsonSerializer),() => JsonSerializerFactory.Value);
             DependencyInjection.BuildContainer();
 			app.MapSignalR();
+			GlobalHost.HubPipeline.AddModule(new ErrorHandlingModule());
         }
         private static readonly Lazy<JsonSerializer> JsonSerializerFactory = new Lazy<JsonSerializer>(GetJsonSerializer);
         private static JsonSerializer GetJsonSerializer()

@@ -13,21 +13,51 @@ var GameController = (function () {
         this.$rootScope = $rootScope;
         var gameHub = $.connection.gameHub;
         $rootScope.$on("game.selected", function (e, game) {
-            $scope.game = game;
+            gameHub.server.watchGame(game.id);
         });
-        $scope.join = function () {
-            if (!$scope.game)
-                return;
-            gameHub.server.joinGame($scope.game.id);
+        $rootScope.$on("card.play", function (e, card) {
+            gameHub.server.playCard(card.id);
+        });
+        $scope.join = function (gameId) {
+            gameHub.server.joinGame(gameId);
+        };
+        $scope.leave = function () {
+            gameHub.server.leaveGame();
+        };
+        $scope.start = function () {
+            gameHub.server.startGame();
+        };
+        $scope.stopWatching = function () {
+            gameHub.server.stopWatchingGame();
         };
         gameHub.client.newTurn = function (turn) {
             $scope.$apply(function () {
                 $scope.turn = turn;
+                $scope.state = new PlayerState(turn);
+            });
+        };
+        gameHub.client.gameDetailsChanged = function (game) {
+            $scope.$apply(function () {
+                $scope.game = game;
+            });
+        };
+        gameHub.client.gameOptionsChanged = function (gameOptions) {
+            $scope.$apply(function () {
+                $scope.gameOptions = gameOptions;
             });
         };
     }
     GameController.$inject = ['$scope', '$rootScope'];
     return GameController;
+})();
+var PlayerState = (function () {
+    function PlayerState(turn) {
+        this.turn = turn;
+    }
+    PlayerState.prototype.canPlayCard = function (card) {
+        return true;
+    };
+    return PlayerState;
 })();
 app.controller("GameController", GameController);
 app.directive('hand', function () {
@@ -39,7 +69,7 @@ app.directive('hand', function () {
     };
 });
 var CardController = (function () {
-    function CardController($scope) {
+    function CardController($scope, $rootScope) {
         $scope.numberOfCosts = 0;
         var card = $scope.card;
         if (card.requiredResources)
@@ -59,15 +89,12 @@ var CardController = (function () {
         $scope.getScienceSymbolName = function (symbolId) {
             return uncapitaliseFirstLetter(_7Wonders.Models.Game.ScienceSymbol[symbolId]);
         };
-        $scope.getBonusTypeName = function (bonus) {
-            if (typeof bonus.rewardForCardType !== 'undefined')
-                return uncapitaliseFirstLetter(_7Wonders.Models.Game.CardType[bonus.rewardForCardType]);
-            if (bonus.rewardForMilitaryVictories)
-                return "militaryVictory";
-            if (bonus.rewardForWonderStages)
-                return "wonder";
-            //return uncapitaliseFirstLetter(_7Wonders.Models.Game.CardType[cardTypeId]);
-        };
+        //$scope.getBonusTypeName = (bonus: _7Wonders.Models.Game.Bonus) => {
+        //    if (typeof bonus.rewardForCardType !== 'undefined') return uncapitaliseFirstLetter(_7Wonders.Models.Game.CardType[bonus.rewardForCardType]);
+        //    if (bonus.rewardForMilitaryVictories) return "militaryVictory";
+        //    if (bonus.rewardForWonderStages) return "wonder";
+        //    //return uncapitaliseFirstLetter(_7Wonders.Models.Game.CardType[cardTypeId]);
+        //};
         $scope.getCardTypeName = function (cardTypeId) {
             return uncapitaliseFirstLetter(_7Wonders.Models.Game.CardType[cardTypeId]);
         };
@@ -76,14 +103,39 @@ var CardController = (function () {
         };
         $scope.test = function (card) {
         };
+        $scope.play = function (card) {
+            $rootScope.$broadcast("card.play", card);
+        };
+        $scope.effectsSize = function (effect) {
+            var size = 0;
+            if (effect.left)
+                size++;
+            if (effect.right)
+                size++;
+            if (effect.self)
+                size++;
+            if (effect.allowTradeResources)
+                size += effect.allowTradeResources.length;
+            if (effect.allResourcesProduced)
+                size += effect.allResourcesProduced.length;
+            if (effect.eitherOrResourcesProduced)
+                size += effect.eitherOrResourcesProduced.length;
+            if (effect.eitherOrScienceSymbolsProduced)
+                size += effect.eitherOrScienceSymbolsProduced.length;
+            if (effect.rewardForSomething || effect.money || effect.victoryPoints)
+                size++;
+            if (effect.militaryPoints)
+                size += effect.militaryPoints;
+            return size;
+        };
     }
-    CardController.$inject = ['$scope'];
+    CardController.$inject = ['$scope', '$rootScope'];
     return CardController;
 })();
 var IconController = (function () {
     function IconController($scope) {
         if (typeof $scope.size !== 'undefined') {
-            if ($scope.size <= 3) {
+            if ($scope.size <= 4) {
                 $scope.sizeName = 'large';
             }
             else if ($scope.size <= 5) {
@@ -112,7 +164,7 @@ app.directive('icon', function () {
         restrict: 'E',
         scope: { kind: '@', value: '=', text: '=', size: '=', money: '=', victory: '=' },
         controller: IconController,
-        templateUrl: "/Templates/Icon",
+        templateUrl: "/Templates/Icon"
     };
 });
 app.directive('card', function () {
@@ -130,33 +182,45 @@ var LobbyController = (function () {
         this.$rootScope = $rootScope;
         var lobbyHub = $.connection.lobbyHub;
         lobbyHub.client.gameListChanged = function (games) {
-            $scope.games = games;
-            $scope.$apply();
+            $scope.$apply(function () {
+                $scope.games = games;
+            });
         };
-        $scope.createGame = function () {
-            lobbyHub.server.createGame($scope.gameName);
+        lobbyHub.client.playerListChanged = function (players) {
+            $scope.$apply(function () {
+                $scope.players = players;
+            });
+        };
+        lobbyHub.client.error = function (message) {
+            alert(message);
+        };
+        $scope.createGame = function (name) {
+            lobbyHub.server.createGame(name);
         };
         $scope.selectGame = function (game) {
             $rootScope.$broadcast("game.selected", game);
         };
-        $.connection.hub.start().done(function () {
-            lobbyHub.server.start();
-            bootstrap();
-        });
-        var bootstrap = function () {
-            setTimeout(function () {
-                if (!$scope.games || $scope.games.length == 0) {
-                    $scope.gameName = 'test1';
-                    $scope.createGame();
-                    $scope.gameName = null;
-                    bootstrap();
-                }
-                else {
-                    $scope.selectGame($scope.games[0]);
-                    $.connection.gameHub.server.joinGame($scope.games[0].id);
-                }
-            }, 1000);
+        $scope.rejoin = function () {
+            $.connection.gameHub.server.rejoin();
         };
+        $.connection.hub.start().done(function () {
+            lobbyHub.server.initialize();
+            //bootstrap();
+        });
+        //var bootstrap = () => {
+        //    setTimeout(() => {
+        //        if (!$scope.games || $scope.games.length == 0) {
+        //            $scope.gameName = 'test1';
+        //            $scope.createGame();
+        //            $scope.gameName = null;
+        //            bootstrap();
+        //        }
+        //        else {
+        //            $scope.selectGame($scope.games[0]);
+        //            $.connection.gameHub.server.joinGame($scope.games[0].id);
+        //        }
+        //    }, 1000);
+        //}
     }
     LobbyController.$inject = ['$scope', '$rootScope'];
     return LobbyController;

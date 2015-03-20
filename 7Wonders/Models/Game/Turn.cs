@@ -9,8 +9,11 @@ namespace _7Wonders.Models.Game
     [TsClass]
     public class GameTurn
     {
-        public int TurnNumber { get; set; }
-        public IEnumerable<Card> Cards { get; set; }
+		public int Age { get; set; }
+		public int TurnNumber { get; set; }
+        public IEnumerable<Card> CardsInHand { get; set; }
+		public IEnumerable<Card> CardsPlayed { get; set; }
+		public int Gold { get; set; }
 
-    }
+	}
 }

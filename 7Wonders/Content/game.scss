@@ -155,9 +155,9 @@ $basicSize: 20px;
     .numberOfPlayers {
         position: absolute;
         bottom: 0;
-        font-size: $basicSize;
-        width: $basicSize;
-        line-height: $basicSize;
+        font-size: 0.5*$basicSize;
+        width: 0.5*$basicSize;
+        line-height: 0.5*$basicSize;
         left: 50%;
         margin-left: -0.5*$basicSize;
     }
@@ -201,7 +201,10 @@ $basicSize: 20px;
         .effects2 {
             width: 2*$basicSize;
         }
-        .effect.trade .money{
+        .trade{
+            display: inline-block;
+        }
+        .trade .money{
             position: absolute;
             left: 50%; 
             margin-left: -0.75*$basicSize; 
@@ -235,7 +238,7 @@ $basicSize: 20px;
 }
 
 .civilianStructure {
-    background-color: dodgerblue;
+    background-color: cornflowerblue;
     color: black;
 }
 
@@ -250,7 +253,7 @@ $basicSize: 20px;
 }
 
 .militaryStructure {
-    background-color: red;
+    background-color: crimson;
     color: black;
 }
 

@@ -10,22 +10,46 @@
 <div>
     <div ng-controller="LobbyController">
         <input ng-model="gameName" />
-        <button ng-click="createGame()">Create Game</button>
+        <button ng-click="createGame(gameName)">Create Game</button>
+		<button ng-click="rejoin()">rejoin</button>
         <h1>Games</h1>
-        <ul>
-            <li ng-repeat="game in games" ng-click="selectGame(game)">{{game.name}}</li>
-        </ul>
+		<ul>
+			<li ng-repeat="game in games" ng-click="selectGame(game)">
+				{{game.name}}
+				<span ng-repeat="player in game.players">{{player.name}}</span>
+			</li>
+		</ul>
+		<h1>Players</h1>
+        <div>
+            <ul>
+                <li ng-repeat="player in players">{{player.name}}</li>
+            </ul>
+        </div>
     </div>
     <hr />
     <div ng-controller="GameController" class="game">
         {{game.name}}
-        <div ng-show="game">
+		<ul>
+			<li ng-repeat="player in game.players">
+				{{player.name}}
+			</li>
+		</ul>
 
-            <button ng-click="join()">join</button>
+		
+        <div ng-show="game">
+            <button ng-show="game.options.canJoin" ng-click="join(game.id)">join</button>
+			<button ng-show="game.options.canLeave" ng-click="leave()">leave</button>
+			<button ng-show="game.options.canStart" ng-click="start()">start</button>
+			<button ng-show="game.options.canStopWatching" ng-click="stopWatching()">stop watching</button>
+
             <div ng-show="turn">turn: {{turn.turnNumber}}</div>
             
-            <hand cards="turn.cards"></hand>
-
+			<h2>Played:</h2>
+			<hand cards="turn.cardsPlayed"></hand>
+			<h2>Hand:</h2>
+			<h3>Gold: {{turn.gold}}</h3>
+            <hand cards="turn.cardsInHand"></hand>
+			
         </div>
 
     </div>

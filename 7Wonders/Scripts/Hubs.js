@@ -81,12 +81,32 @@
         proxies['gameHub'] = this.createHubProxy('gameHub'); 
         proxies['gameHub'].client = { };
         proxies['gameHub'].server = {
-            getGameDetails: function (id) {
-                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["GetGameDetails"], $.makeArray(arguments)));
-             },
-
             joinGame: function (id) {
                 return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["JoinGame"], $.makeArray(arguments)));
+             },
+
+            leaveGame: function () {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["LeaveGame"], $.makeArray(arguments)));
+             },
+
+            playCard: function (id) {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["PlayCard"], $.makeArray(arguments)));
+             },
+
+            rejoin: function () {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["Rejoin"], $.makeArray(arguments)));
+             },
+
+            startGame: function () {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["StartGame"], $.makeArray(arguments)));
+             },
+
+            stopWatchingGame: function () {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["StopWatchingGame"], $.makeArray(arguments)));
+             },
+
+            watchGame: function (id) {
+                return proxies['gameHub'].invoke.apply(proxies['gameHub'], $.merge(["WatchGame"], $.makeArray(arguments)));
              }
         };
 
@@ -97,8 +117,8 @@
                 return proxies['lobbyHub'].invoke.apply(proxies['lobbyHub'], $.merge(["CreateGame"], $.makeArray(arguments)));
              },
 
-            start: function () {
-                return proxies['lobbyHub'].invoke.apply(proxies['lobbyHub'], $.merge(["Start"], $.makeArray(arguments)));
+            initialize: function () {
+                return proxies['lobbyHub'].invoke.apply(proxies['lobbyHub'], $.merge(["Initialize"], $.makeArray(arguments)));
              }
         };
 
